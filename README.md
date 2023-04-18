@@ -48,9 +48,9 @@ wifi.powersave = 2
 ``` 
 - sudo systemctl restart NetworkManager
 
-### Create a swap file
+### Create a swap file -- recheck this
 ```
-sudo dd if=/dev/zero of=/swapfilebs=1M status=progress count=2048 #chagne count value for different swapsize
+sudo dd if=/dev/zero of=/swapfile bs=1M status=progress count=2048 #chagne count value for different swapsize
 #the above command makes the swapfile
 
 sudo chmod 600 /swapfile
@@ -69,13 +69,13 @@ free -h #check if swap is running
 - sudo pacman -Syu
 
 ### Installing yay
-- git clone <git url from archlinux yay page>
+- git clone https://aur.archlinux.org/yay.git
 - cd yay_dir
 - makepkg -si
 
 ### Copy your repo from github
 ```
-git clone <repo>
+git clone git@github.com:aditya1876/Dotfiles1.git
 mkdir ~/.config/ (if not existing)
 cp -r <repo>/.config/* ~/.config/
 cp <repo>/.bash_profile ~/.bash_profile (check if anything existing alreay)
