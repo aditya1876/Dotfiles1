@@ -5,14 +5,14 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 #Launch picom on startup
-picom &
+#picom &
 
 #unmute on start
-amixer sset Master unmute
+#amixer sset Master unmute
 
 ######DOOM EMACS########
 #start doom emacs daemon/ server at user login
-/usr/bin/emacs --daemon &
+#/usr/bin/emacs --daemon &
 ########################
 
 ###Start Xserver when user logs in#####

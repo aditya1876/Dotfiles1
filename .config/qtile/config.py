@@ -44,7 +44,7 @@ colors = {
 mod='mod4'
 
 ##Applications
-MyTerminal = 'xfce4-terminal'
+MyTerminal = 'alacritty'
 MyBrowser = 'vieb'
 MyCodeEditor = 'code'
 MyBrowser2 = 'brave'
@@ -220,16 +220,17 @@ screens = [
                 widget.WindowName(format='{name}',max_chars=60,),
                 #widget.TextBox(offset=-1, padding=1, text = '',),
                 widget.Image(filename='~/.config/qtile/assets/bar/vol3.png',margin=2,),
-                widget.Volume(
-                    commands={
-                        'decrease': 'pamixer --decrease 5',
-                        'increase': 'pamixer --increase 5',
-                        'get': 'pamixer --get-volume-human',
-                        'mute': 'pamixer --toggle-mute',
-                    },
-                    update_interval = 0.1,
-                    padding=-1
-                ),
+                widget.GenPollText(func=functions.fn_volume_value,update_interval=0.1,padding=-1,),
+                #widget.Volume(
+                #    commands={
+                #        'decrease': 'pamixer --decrease 5',
+                #        'increase': 'pamixer --increase 5',
+                #        'get': 'pamixer --get-volume',
+                #        'mute': 'pamixer --toggle-mute',
+                #    },
+                #    update_interval = 0.1,
+                #    padding=-1
+                #),
                 widget.Image(filename='~/.config/qtile/assets/bar/sun.png', margin=2,),
                 widget.GenPollText(func=functions.fn_brightness_value,update_interval=0.1,padding=-1,),
                 widget.Image(filename='~/.config/qtile/assets/bar/battery.png',margin=2),
