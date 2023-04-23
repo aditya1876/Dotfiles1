@@ -1,8 +1,9 @@
 from libqtile import widget
 import os, subprocess, random
 from subprocess import check_output
+import time
 
-#function to get the volumn value
+#function to get volume value
 def fn_volume_value() -> str:
     my_cmd="pamixer --get-volume"
     output = subprocess.Popen(my_cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT).stdout.read()
@@ -25,7 +26,7 @@ def fn_brightness_value() -> str:
 
 #function to get the Wifi network name
 def fn_wifi_name() -> str:
-    my_cmd = "nmcli connection show --active| grep 'wifi'| cut -d ' ' -f 1"
+    my_cmd = "nmcli connection show | grep 'wifi'| cut -d ' ' -f 1"
     output = subprocess.Popen(my_cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT).stdout.read()
     output=output.decode()[:-1] #convert byte to str and remove last \n char
     return output
@@ -44,7 +45,7 @@ def fn_capslock():# -> widget:
 def fn_numlock():# -> widget:
     my_cmd = "xset q | grep Num | cut -d : -f 5 | awk '{$1=$1};1' | cut -d ' ' -f 1"
     output = subprocess.Popen(my_cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT).stdout.read()
-    output=output.decode()[:-1] #convert byte to str and remove last \n char
+    output=output.decode()[:-1] #convert byte to str and remove last \n char        
     if output=='off':
         return widget.Image(filename='~/.config/qtile/assets/bar/numOff.png',margin=2)
     elif output=='on':

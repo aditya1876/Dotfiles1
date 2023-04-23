@@ -8,9 +8,6 @@ alacritty
 code
 speedcrunch
 elisa
-zathura
-zathura-cb
-zathura-pdf-mupdf
 ranger
 w3m
 vimiv
@@ -52,7 +49,11 @@ noto-fonts-emoji
 lxappearance
 xfce4-settings
 ttf-firacode-nerd
-kitty
 qtile
 python-psutil
 rofi
+xorg-server
+xorg-xinit
+xorg-xrandr
+neofetch
+libreoffice-fresh

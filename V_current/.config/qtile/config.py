@@ -108,6 +108,7 @@ keys = [
     Key([mod], "e", lazy.spawn(MyFileManager), desc = "Launch thunar"),
     Key([mod], "r", lazy.spawn(MyLauncher), desc = "Launch rofi - apps"),
     Key([mod, "shift"], "r", lazy.spawn("rofi -show window"), desc = "Launch rofi - windows"),
+    Key([mod], "l", lazy.spawn("betterlockscreen -l"), desc = "Lock screen using betterlockscreen"),
 
     # Hardware/system control
     #Sound
@@ -220,12 +221,12 @@ screens = [
                 widget.WindowName(format='{name}',max_chars=60,),
                 #widget.TextBox(offset=-1, padding=1, text = '',),
                 widget.Image(filename='~/.config/qtile/assets/bar/vol3.png',margin=2,),
-                widget.GenPollText(func=functions.fn_volume_value,update_interval=0.1,padding=-1,),
+                widget.GenPollText(func=functions.fn_volume_value, update_interval=0.1, padding=-1,),
                 #widget.Volume(
                 #    commands={
                 #        'decrease': 'pamixer --decrease 5',
                 #        'increase': 'pamixer --increase 5',
-                #        'get': 'pamixer --get-volume',
+                #        'get': 'pamixer --get-volume-human',
                 #        'mute': 'pamixer --toggle-mute',
                 #    },
                 #    update_interval = 0.1,
@@ -305,3 +306,4 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+

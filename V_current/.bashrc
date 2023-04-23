@@ -20,28 +20,30 @@ bind "set completion-ignore-case on"
 #alias evb='sudo systemctl enable --now vboxservice.service'  ---delete this line if you dont see any problems in usage
 
 #########ALIAS##########
-#alias ls='ls --color=auto'
-alias ls='ls -lct --color=auto'
-alias em="emacsclient -c -a 'emacs' &"
+alias ls='ls -lact --color=auto'
+alias em="emacsclient -c -a 'emacs' &" #doomemacs client mode
 alias n="nvim"
 alias fm="ranger"
 alias grep="grep --color=auto"
+
 # git
 alias gs="git status"
 alias ga="git add ."
 alias gc="git commit -m"
 alias gph="git push origin"
 alias gpu="git pull origin"
+
 #mount and unmount usb(only works for 1 usb at a time. will fail if 2 usbs are connnected)
 alias mount_it="udisksctl mount -b /dev/sdb1" 
 alias unmount_it="udisksctl unmount -b /dev/sdb1"
+
 # confirm before overwriting something
 alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
-#DOOM EMACS
-alias emacs = "emacsclient -c -a 'emacs' &" #client mode
+#Switch to external monitor
+alias switch="xrandr --output HDMI-1 --mode 1920x1080"
 #########################
 
 ##########PROMPTS##########
@@ -134,5 +136,22 @@ fi
 ##################################
 
 ##########DOOM EMACS##############
-export PATH="$PATH:$HOME/.emacs.d/bin"
+#export PATH="$PATH:$HOME/.emacs.d/bin"
+export PATH="$PATH:$HOME/.config/emacs/bin"
 ###################################
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/adi/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/adi/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/adi/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/adi/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
