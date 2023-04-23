@@ -1,6 +1,3 @@
 masterpdfeditor-free
 vieb-bin
-brave-bin
-swaylock-effects
-sddm-git
-sddm-sugar-candy-git
+betterlockscreen
