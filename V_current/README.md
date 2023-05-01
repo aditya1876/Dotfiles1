@@ -102,8 +102,6 @@ cp -r <repo>/Wallpapers/* ~/Wallpaper/
 ### DOOM Emacs
 - install doom emacs from the github page - https://github.com/doomemacs/doomemacs
 
-### Copy data from USB
-
 ### Miniconda
 - download latest linux version from website
 - run 'bash filename'
@@ -112,7 +110,11 @@ cp -r <repo>/Wallpapers/* ~/Wallpaper/
 ### VS code
     - Sync using 'setting sync'
 
-### Copy data from external Hard Disk
+### Copy data from external Hard Disk 
+    - backup folder
+    - backup_secrets folder
+        - .ssh/ should be copied to ~
+        - copy profiles and profile.ini to ~/.mozilla/firefox/ (integrate profile.ini with backed updata)
 
 ## TODO
 - [] How to turn off laptop screen when external monitor is connected
