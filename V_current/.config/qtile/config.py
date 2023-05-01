@@ -47,13 +47,14 @@ mod='mod4'
 MyTerminal = 'alacritty'
 MyBrowser = 'vieb'
 MyCodeEditor = 'code'
-MyBrowser2 = 'brave'
+MyBrowser2 = 'firefox -p "main"'
 MyCalculator = 'speedcrunch'
 MyMusicPlayer = 'elisa'
 MyFileManager = 'thunar'
 MyTextEditor = 'notepadqq'
 MyEmacsClient = 'emacsclient -c -a "emacs"'
 MyLauncher = 'rofi -show drun'
+MyScratchTextEditor = 'mousepad /home/adi/02_Docs/my_scratchpad.md'
 
 # █▄▀ █▀▀ █▄█ █▄▄ █ █▄░█ █▀▄ █▀
 # █░█ ██▄ ░█░ █▄█ █ █░▀█ █▄▀ ▄█
@@ -102,7 +103,7 @@ keys = [
     Key([mod], "z", lazy.spawn(MyBrowser), desc = "Launch vieb browser"),
     Key([mod], "x", lazy.spawn(MyCodeEditor), desc = "Launch vs code"),
     Key([mod], "c", lazy.spawn(MyCalculator), desc = "Launch speedcrunch"),
-    Key([mod], "b", lazy.spawn(MyBrowser2), desc = "Launch brave browser"),
+    Key([mod], "b", lazy.spawn(MyBrowser2), desc = "Launch firefox 'main' profile"),
     Key([mod], "n", lazy.spawn(MyEmacsClient), desc = "Launch emacs client"),
     Key([mod], "w", lazy.spawn(MyTextEditor), desc = "Launch notepadqq"),
     Key([mod], "e", lazy.spawn(MyFileManager), desc = "Launch thunar"),
@@ -166,13 +167,15 @@ for i in groups:
 # Append scratchpad with dropdowns to groups
 groups.append(ScratchPad('scratchpad', [
     DropDown('MyTerminal', MyTerminal, width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
-    DropDown('MyTextEditor', MyTextEditor, width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
+    DropDown('MyScratchTextEditor', MyScratchTextEditor, width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
+    #DropDown('MyTextEditor', MyTextEditor, width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
     DropDown('MyFileManager', MyFileManager, width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
 ]))
 # extend keys list with keybinding for scratchpad
 keys.extend([
     Key(["control"], "1", lazy.group['scratchpad'].dropdown_toggle('MyTerminal')),
-    Key(["control"], "2", lazy.group['scratchpad'].dropdown_toggle('MyTextEditor')),
+    Key(["control"], "2", lazy.group['scratchpad'].dropdown_toggle('MyScratchTextEditor')),
+    #Key(["control"], "2", lazy.group['scratchpad'].dropdown_toggle('MyTextEditor')),
     Key(["control"], "3", lazy.group['scratchpad'].dropdown_toggle('MyFileManager')),
 ])
 
@@ -216,22 +219,10 @@ screens = [
                 widget.Memory(format = '{MemUsed: .0f}{mm} ',padding = -1,),
                 widget.Image(filename='~/.config/qtile/assets/bar/hdd.png',margin=2),         
                 widget.DF(format = '{f} GB',padding = 0,partition = '/home',visible_on_warn=False,),
-                #widget.TextBox(offset=1, padding=2, text = '',),
                 widget.Spacer(length=bar.STRETCH,),
                 widget.WindowName(format='{name}',max_chars=60,),
-                #widget.TextBox(offset=-1, padding=1, text = '',),
                 widget.Image(filename='~/.config/qtile/assets/bar/vol3.png',margin=2,),
                 widget.GenPollText(func=functions.fn_volume_value, update_interval=0.1, padding=-1,),
-                #widget.Volume(
-                #    commands={
-                #        'decrease': 'pamixer --decrease 5',
-                #        'increase': 'pamixer --increase 5',
-                #        'get': 'pamixer --get-volume-human',
-                #        'mute': 'pamixer --toggle-mute',
-                #    },
-                #    update_interval = 0.1,
-                #    padding=-1
-                #),
                 widget.Image(filename='~/.config/qtile/assets/bar/sun.png', margin=2,),
                 widget.GenPollText(func=functions.fn_brightness_value,update_interval=0.1,padding=-1,),
                 widget.Image(filename='~/.config/qtile/assets/bar/battery.png',margin=2),
@@ -240,7 +231,6 @@ screens = [
                 widget.GenPollText(func=functions.fn_bluetooth_name,update_interval=5,padding=-1,),
                 widget.Image(filename='~/.config/qtile/assets/bar/wifi.png',margin=2),
                 widget.GenPollText(func=functions.fn_wifi_name,update_interval=5,padding=-1,),
-                #widget.Wlan(format = '{essid}-{percent:2.0%} ',padding = -1,),
                 widget.TextBox(offset=-1, padding=1, text = '',),
                 #qtile.call_later(1,functions.fn_capslock()), 
                 functions.fn_capslock(), #function to display if capslock on or off
@@ -248,7 +238,6 @@ screens = [
                 widget.TextBox(offset=-1, padding=1, text = '',),
                 widget.Image(filename='~/.config/qtile/assets/bar/clock.png',margin=1),
                 widget.Clock(format='%a, %b %d - %H:%M:%S ',long_format = '%b %-d, %Y',padding = 1,),         
-                #widget.Systray(icon_size=24,padding=0,background=colors["surface0"]),   
                 widget.CurrentLayoutIcon(padding=0,scale=0.9,custom_icon_paths=[os.path.expanduser("~/.config/qtile/assets/layout/"),],),
             ],
             22,
@@ -256,7 +245,7 @@ screens = [
             opacity=0.8,
             background=colors["base"]
         ),
-        #Random wallpaper everytime config is loaded
+        #Random wallpaper everytime config is loaded (folder = ~/Wallpapers)
         wallpaper = str(functions.fn_randomWallpaper()),
         wallpaper_mode='fill'
     ),

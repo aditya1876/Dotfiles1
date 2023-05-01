@@ -12,7 +12,6 @@ ranger
 w3m
 vimiv
 kdeconnect
-notepadqq
 vlc
 unrar
 tar
@@ -57,3 +56,4 @@ xorg-xinit
 xorg-xrandr
 neofetch
 libreoffice-fresh
+mousepad
