@@ -67,7 +67,8 @@ free -h #check if swap is running
 ### Copy your repo from github
 - copy all files to local in proper directories
 ```
-git clone git@github.com:aditya1876/Dotfiles1.git
+#git clone git@github.com:aditya1876/Dotfiles1.git #this does not work without .ssh folder
+git clone https://github.com/aditya1876/Dotfiles1.git
 mkdir ~/.config/ (if not existing)
 cp -r <repo>/.config/* ~/.config/
 cp <repo>/.bash_profile ~/.bash_profile (check if anything existing alreay)
@@ -82,7 +83,6 @@ cp -r <repo>/Wallpapers/* ~/Wallpaper/
 
 ### Start services
 - sudo systemctl enable --now bluetooth.service
-- sudo systemctl enable sddm
 - sudo systemctl enable ufw
 
 ### Changing systemwide themes
@@ -112,6 +112,7 @@ cp -r <repo>/Wallpapers/* ~/Wallpaper/
 
 ### Copy data from external Hard Disk 
     - backup folder
+    - Update Wallpapers folder with content from external HDD
     - backup_secrets folder
         - .ssh/ should be copied to ~
         - copy profiles and profile.ini to ~/.mozilla/firefox/ (integrate profile.ini with backed updata)
