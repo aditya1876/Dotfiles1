@@ -113,13 +113,13 @@ set_prompt(){
     PS1+="${BG_BLUE}${FG_WHITE}${FMT_BOLD} \w ${FMT_RESET}" # DIRECTORY container
     PS1+="${BG_CYAN}${FG_GREY}${FMT_BOLD} " #Files container
     PS1+=" \$(find . -mindepth 1 -maxdepth 1 -type d | wc -l) " # number of folders
-    PS1+=" \$(find . -mindepth 1 -maxdepth 1 -type f | wc -l) " # number of files
-    PS1+=" \$(find . -mindepth 1 -maxdepth 1 -type l | wc -l) " # number of symlinks
+    PS1+=" \$(find . -mindepth 1 -maxdepth 1 -type f | wc -l) " # number of files
+    PS1+=" \$(find . -mindepth 1 -maxdepth 1 -type l | wc -l) " # number of symlinks
     PS1+="${FMT_RESET}"
     PS1+="${BG_GREEN}${FG_WHITE}${FMT_BOLD}  \t ${FMT_RESET}" # Time container
     PS1+="${BG_YELLOW}${FMT_BOLD}${FG_GREY}  $(parse_git_branch) ${FMT_RESET}" # Git container
     timer_stop
-    PS1+="${BG_BLACK}${FG_GREY}${FMT_BOLD} 羽$timer_show ${FMT_RESET}" # Time container
+    PS1+="${BG_BLACK}${FG_GREY}${FMT_BOLD} 󰔟 $timer_show ${FMT_RESET}" # Time container
     PS1+="\n${FG_BLUE}╰ ${FMT_RESET}" # end arrow to prompt
 }
 
