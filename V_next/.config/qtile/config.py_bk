@@ -151,8 +151,8 @@ keys = [
 groups = [
     Group("1", label=""),
     Group("2", label=""),
-    Group("3", label=""),
-    Group("4", label="󰠮"),
+    Group("3", label=""),
+    Group("4", label="ﴬ"),
     Group("5", label=""),
     Group("6", label="")
 ]
@@ -212,8 +212,7 @@ screens = [
             [
                 widget.GroupBox(fontsize=20, margin_y=3, margin_x=4, borderwidth=1, active=colors["sky"],block_highlight_text_color=colors["rosewater"],
                 inactive=colors["overlay0"], rounded=True, disable_drag=True,highlight_method='line',invert=True,rainbow=True),
-                #widget.TextBox(offset=-1, padding=1, text = '',),
-                widget.Image(filename='~/.config/qtile/assets/bar/verticalSep.png'),         
+                widget.TextBox(offset=-1, padding=1, text = '',),
                 widget.Image(filename='~/.config/qtile/assets/bar/cpu.png',margin=3),         
                 widget.CPU(format = '{load_percent:.0f}% ',padding=-1),
                 widget.Image(filename='~/.config/qtile/assets/bar/ram.png',margin=2),         
@@ -232,19 +231,17 @@ screens = [
                 widget.GenPollText(func=functions.fn_bluetooth_name,update_interval=5,padding=-1,),
                 widget.Image(filename='~/.config/qtile/assets/bar/wifi.png',margin=2),
                 widget.GenPollText(func=functions.fn_wifi_name,update_interval=5,padding=-1,),
-                #widget.TextBox(offset=-1, padding=1, text = '',),
-                widget.Image(filename='~/.config/qtile/assets/bar/verticalSep.png'),         
+                widget.TextBox(offset=-1, padding=1, text = '',),
                 #qtile.call_later(1,functions.fn_capslock()), 
                 functions.fn_capslock(), #function to display if capslock on or off
                 functions.fn_numlock(), #function to display if numlock on or off
-                #widget.TextBox(offset=-1, padding=1, text = '',),
-                widget.Image(filename='~/.config/qtile/assets/bar/verticalSep.png'),         
+                widget.TextBox(offset=-1, padding=1, text = '',),
                 widget.Image(filename='~/.config/qtile/assets/bar/clock.png',margin=1),
                 widget.Clock(format='%a, %b %d - %H:%M:%S ',long_format = '%b %-d, %Y',padding = 1,),         
                 widget.CurrentLayoutIcon(padding=0,scale=0.9,custom_icon_paths=[os.path.expanduser("~/.config/qtile/assets/layout/"),],),
             ],
             22,
-            margin=[3, 3, 1, 3], #3rd value is 1 because widget_defaults have margin=2 so total gap between bar and window adds to 3
+            margin=[3, 3, 3, 3],
             opacity=0.8,
             background=colors["base"]
         ),
