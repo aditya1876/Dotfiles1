@@ -5,7 +5,7 @@ from libqtile.config import Click, Drag, Group, Key, Match, hook, Screen, KeyCho
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from libqtile.dgroups import simple_key_binder
-from libqtile.widget import clock
+#from libqtile.widget import clock
 
 import functions
 #import clock
@@ -47,11 +47,13 @@ mod='mod4'
 MyTerminal = 'alacritty'
 MyBrowser = 'vieb'
 MyCodeEditor = 'code'
-MyBrowser2 = 'firefox -p "main"'
+MyBrowser_ff = 'firefox -p "main"'
+MyBrowser_adikakaam = 'firefox -p adikakaam'
 MyCalculator = 'speedcrunch'
 MyMusicPlayer = 'elisa'
 MyFileManager = 'thunar'
-MyTextEditor = 'notepadqq'
+#MyTextEditor = 'notepadqq'
+#MyTextEditor = 'mousepad'
 MyEmacsClient = 'emacsclient -c -a "emacs"'
 MyLauncher = 'rofi -show drun'
 MyScratchTextEditor = 'mousepad /home/adi/02_Docs/my_scratchpad.md'
@@ -103,32 +105,43 @@ keys = [
     Key([mod], "z", lazy.spawn(MyBrowser), desc = "Launch vieb browser"),
     Key([mod], "x", lazy.spawn(MyCodeEditor), desc = "Launch vs code"),
     Key([mod], "c", lazy.spawn(MyCalculator), desc = "Launch speedcrunch"),
-    Key([mod], "b", lazy.spawn(MyBrowser2), desc = "Launch firefox 'main' profile"),
+    #Key([mod], "b", lazy.spawn(MyBrowser_ff), desc = "Launch firefox 'main' profile"),
     Key([mod], "n", lazy.spawn(MyEmacsClient), desc = "Launch emacs client"),
-    Key([mod], "w", lazy.spawn(MyTextEditor), desc = "Launch notepadqq"),
+    #Key([mod], "w", lazy.spawn(MyTextEditor), desc = "Launch notepadqq"),
     Key([mod], "e", lazy.spawn(MyFileManager), desc = "Launch thunar"),
     Key([mod], "r", lazy.spawn(MyLauncher), desc = "Launch rofi - apps"),
     Key([mod, "shift"], "r", lazy.spawn("rofi -show window"), desc = "Launch rofi - windows"),
-    Key([mod], "l", lazy.spawn("betterlockscreen -l"), desc = "Lock screen using betterlockscreen"),
+    # Key([mod], "l", lazy.spawn("betterlockscreen -l"), desc = "Lock screen using betterlockscreen"),
+
+    #### Keychords for browsers
+    KeyChord([mod],"b",[
+        Key([],"m", lazy.spawn(MyBrowser_ff), desc = "launch firefox main profile"),
+        Key([],"k", lazy.spawn(MyBrowser_adikakaam), desc = "launch firefox adikakaam profile"),
+        Key([],"v", lazy.spawn(MyBrowser), desc = "Launch vieb browser"),
+    ]),
 
     # Hardware/system control
-    #Sound
+    ####Sound
     Key([], "XF86AudioMute", lazy.spawn("pamixer toggle-mute")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pamixer --decrease 5")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer --increase 5")),
 
-    #Brightness
+    ####Brightness
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
 
-    #Music
+    ####Music
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
 
-    #Screenlocking
+    ####Screen Locking
     Key([mod], "l", lazy.spawn("betterlockscreen -l"), desc = "Lock the screen"),
 
+    #### Screeshots
+    Key([], "print", lazy.spawn("ksnip -m"), desc = "Take fullscreen screenshot of current window using ksnip"),
+    Key(["shift"], "print", lazy.spawn("ksnip -r"), desc = "Take screenshot of rectangular area"),
+    
     # Emacs programs launched using the key chord CTRL+e followed by 'key'
     # KeyChord([mod],"a", [
     #     Key([], "e",lazy.spawn("emacsclient -c -a 'emacs'"),desc='Emacsclient Dashboard'),
@@ -168,23 +181,22 @@ for i in groups:
 groups.append(ScratchPad('scratchpad', [
     DropDown('MyTerminal', MyTerminal, width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
     DropDown('MyScratchTextEditor', MyScratchTextEditor, width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
-    #DropDown('MyTextEditor', MyTextEditor, width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
     DropDown('MyFileManager', MyFileManager, width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
 ]))
 # extend keys list with keybinding for scratchpad
 keys.extend([
     Key(["control"], "1", lazy.group['scratchpad'].dropdown_toggle('MyTerminal')),
     Key(["control"], "2", lazy.group['scratchpad'].dropdown_toggle('MyScratchTextEditor')),
-    #Key(["control"], "2", lazy.group['scratchpad'].dropdown_toggle('MyTextEditor')),
     Key(["control"], "3", lazy.group['scratchpad'].dropdown_toggle('MyFileManager')),
 ])
 
 ##Layouts
 layouts = [
-    layout.Columns(border_focus = colors["sapphire"], border_normal = colors["base"], margin = 2, border_width = 1,),
-    layout.MonadTall(border_focus = colors["sapphire"], border_normal = colors["base"], margin = 2, border_width = 1,),
-    layout.MonadWide(border_focus = colors["sapphire"], border_normal = colors["base"], margin = 2, border_width = 1,),
-    layout.Floating(border_focus = colors["sapphire"], border_normal = colors["base"], margin = 2, border_width = 1,),
+    #layout.Columns(border_focus = colors["sapphire"], border_normal = colors["base"], margin = 2, border_width = 1,),
+    layout.Columns(border_focus = colors["red"], border_normal = colors["base"], margin = 2, border_width = 1,),
+    layout.MonadTall(border_focus = colors["pink"], border_normal = colors["base"], margin = 2, border_width = 1,),
+    layout.MonadWide(border_focus = colors["mauve"], border_normal = colors["base"], margin = 2, border_width = 1,),
+    layout.Floating(border_focus = colors["maroon"], border_normal = colors["base"], margin = 2, border_width = 1,),
     #layout.Spiral(border_focus = colors["sapphire"], border_normal = colors["base"], margin = 6, border_width = 1,),
     #layout.Max(),
     #layout.Bsp(),
@@ -263,7 +275,8 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
-follow_mouse_focus = False
+#follow_mouse_focus = False
+follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
