@@ -1,3 +1,4 @@
 masterpdfeditor-free
 vieb-bin
 betterlockscreen
+visual-studio-code-bin

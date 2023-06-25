@@ -24,11 +24,11 @@ ping google.com - CTRL+C
     - disk encryption = set lan password (script giving error if not provided)
     - swap = no (create swapfile later)
     - hostname = adimc01 / adimc02
-    - root password = <no change>
+    - root password = Same as user password
     - user acccount = create new user > yes to sudo access
     - profile = minimal
     - audio = pipewire
-    - kernels = <no change>
+    - kernels = choose only zen kernel
     - Additional packages = git vim xf86-video-intel or xf86-video-amdgpu(install rest of the packages using packageslist files later)
     - Network Config = NetwrokManager
     - Timezone = Asia/Kolkata
@@ -99,24 +99,44 @@ cp -r <repo>/Wallpapers/* ~/Wallpaper/
 
 ### Restart into Qtile
 
-### DOOM Emacs
-- install doom emacs from the github page - https://github.com/doomemacs/doomemacs
+### Firefox
+    - copy .mofilla/firefox form external hdd (backup_secrets) to ~/mozilla/firefox
+    - Launch firefox with profile > about:profiles > delete the profile named 'default' > create a new profile named 'default' > make this profile as default 
+
+### VS code
+    - Turn on Setting sync in profile icon and login using github profile
+    - create a new .ssh key and save in .ssh/
+        - `ssh-keygen -t ed25519 -C "your_github_Email"`
+        - Enter (default location= ~/.ssh)
+        - Enter passphrase
+        - check public and private key created in .ssh/
+        - `eval $(ssh-agent -s)`
+        - `ssh-add ~/.ssh/Private_key` (id_XXXX)
+        - Add public key to github
+            - `cat ~/.ssh/public_key` (id_xxx.pub)
+            - copy the entire output
+            - go to github.com > your icon > settings>access> ssh and gpg keys > Add new > give any title > paste public key
+
+### Copy data from external Hard Disk 
+    - backup folder
+
+### Mousepad
+    - Setup mousepad after new install
+        - Copy 02_docs from backup
+        - View > colour scheme > cobalt
+        - view > check line numbers
+        - view > uncheck menu bar (use alt to display menubar)
+        - view > font > fira code > size 12
 
 ### Miniconda
 - download latest linux version from website
 - run 'bash filename'
 - select yes to all questions during install
 
-### VS code
-    - Sync using 'setting sync'
+### DOOM Emacs
+- install doom emacs from the github page - https://github.com/doomemacs/doomemacs
 
-### Copy data from external Hard Disk 
-    - backup folder
-    - Update Wallpapers folder with content from external HDD
-    - backup_secrets folder
-        - .ssh/ should be copied to ~
-        - copy profiles and profile.ini to ~/.mozilla/firefox/ (integrate profile.ini with backed updata)
-
+    
 ## TODO
 - [] How to turn off laptop screen when external monitor is connected
 - [] Update capslock and Numlock indicator on the fly
