@@ -58,3 +58,5 @@ neofetch
 libreoffice-fresh
 mousepad
 ksnip
+ttf-jetbrains-mono
+ttf-ubuntu-font-family
