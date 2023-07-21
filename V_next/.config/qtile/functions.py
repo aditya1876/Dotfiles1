@@ -26,7 +26,8 @@ def fn_brightness_value() -> str:
 
 #function to get the Wifi network name
 def fn_wifi_name() -> str:
-    my_cmd = "nmcli connection show | grep 'wifi'| cut -d ' ' -f 1"
+    #my_cmd = "nmcli connection show | grep 'wifi'| cut -d ' ' -f 1"
+    my_cmd = "nmcli connection show | sed -n '2 p' | cut -d ' ' -f 1"
     output = subprocess.Popen(my_cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT).stdout.read()
     output=output.decode()[:-1] #convert byte to str and remove last \n char
     return output
