@@ -6,20 +6,13 @@ xf86-video-vesa
 picom
 alacritty
 speedcrunch
-elisa
-ranger
-w3m
-vimiv
 kdeconnect
-vlc
 unrar
 tar
 ark
 python-pip
 libical
 ufw
-qt5ct
-spectacle
 firefox
 make
 unzip
@@ -60,3 +53,5 @@ mousepad
 ksnip
 ttf-jetbrains-mono
 ttf-ubuntu-font-family
+sxiv
+mpv

@@ -34,8 +34,10 @@ alias gph="git push origin"
 alias gpu="git pull origin"
 
 #mount and unmount usb(only works for 1 usb at a time. will fail if 2 usbs are connnected)
-alias mount_it="udisksctl mount -b /dev/sdb1" 
-alias unmount_it="udisksctl unmount -b /dev/sdb1"
+#alias mount_it="udisksctl mount -b /dev/sdb1" 
+#alias unmount_it="udisksctl unmount -b /dev/sdb1"
+alias mount_it="sudo mount /dev/sdb1 /run/media/adi/MyPassport"
+alias unmount_it="sudo umount -l /dev/sdb1"
 
 # confirm before overwriting something
 alias cp="cp -i"
@@ -44,6 +46,12 @@ alias rm='rm -i'
 
 #Switch to external monitor
 alias switch="xrandr --output HDMI-1 --mode 1920x1080"
+
+#Searching thourgh history for a command
+#run - 'his git' to search for all git commands in history
+function his(){
+  history | grep "$1";
+}
 #########################
 
 ##########PROMPTS##########
@@ -155,3 +163,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+PATH=~/.console-ninja/.bin:$PATH
